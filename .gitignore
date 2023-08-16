@@ -1,0 +1,33 @@
+# env:
+.env
+
+#logs:
+logs
+*.log
+npm-debug.log*
+
+# main ignore:
+.DS_Store
+.tmp
+node_modules/
+
+# JavaScript IDEs:
+.idea
+.vscode
+
+# Vim files:
+*.csv
+*.sw[op]
+
+# Cache:
+.npm
+.cache/
+__pycache__
+
+# JavaScript Projects dirs (optional)
+dist
+uploads
+build
+
+file.js 
+file.txt
