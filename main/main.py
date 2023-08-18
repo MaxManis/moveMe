@@ -12,7 +12,13 @@ from config.config import SLEEP_BEFORE_START, SLEEP_BEFORE_STEP, WRITE_INTERVAL,
 from modules.texts import texts, codesText
 from modules.getRandom import getRandomAction, getRandomLacation, getRandomText, getRandomTrueOrFalse
 
-def app():
+def app() -> None:
+    # print logo on start
+    with open(os.path.join(os.path.dirname(__file__), 'config', 'intro.txt')) as f:
+        intro = f.read()
+        print(intro)
+        f.close()
+
     # screenWidth, screenHeight = pyautogui.size()
     # print(screenWidth, screenHeight)
     isWindows = platform.system() == 'Windows'
@@ -28,7 +34,9 @@ def app():
         inquirer.List('mainMode', message='Choose a main mode?', choices=['spy', 'custom'], default='spy'),
     ]
     ans = inquirer.prompt(startQuestions)
-    isSpyMainMode = True if ans['mainMode'] == 'spy' else False
+    mainModeStr: str = ans['mainMode'] if ans != None else 'spy'
+
+    isSpyMainMode = True if mainModeStr == 'spy' else False
 
     isPressDel = False
     isOpenEditor = False
